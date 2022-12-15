@@ -1,29 +1,13 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
 
-# +
 import csv
 
 FILE1="clustered-heavies-COV2vaccine.dat"
-#FILE2="clustered-lights-0807.dat"
 
 PAIRED='1+2Dose+publics.csv'
 
 MISSING="missing.dat"
 mout = open(MISSING,'w')
 
-# d = {}
 hout = {}
 
 hout_hash = {}
@@ -46,40 +30,13 @@ with open(FILE1) as fin:
             hout_hash[ls[0]].append(hc_id)
             
 cluster_index = 0
-# with open(FILE2) as fin:
-#     for line in fin:
-#         if "END" in line:
-#             cluster_index += 1
-#             continue
-        
-#         ls = line.strip().split(' ')
-#         lc_id = ls[3]+'_'+ls[4]+'_'+str(len(ls[5]))+'_'+str(cluster_index)
-        
-#         d = None
-#         if ls[0] not in hout_hash:
-#             mout.write(ls[0] + '\n')
-#             continue
-            
-#         for h in hout_hash[ls[0]]:
-#             if ls[0] in hout[h]:
-#                 d = hout[h]
-#                 break
-            
-#         if not d:
-#             print("Missing:", ls[0])
-#         else:
-#             d[ls[0]]['lights'].append({'cluster': lc_id, 'ls': ls})
 
 with open(PAIRED) as fin:
     fin.readline()
     for line in fin:
-#        if "END" in line:
-#            cluster_index += 1
-#            continue
-#        
+
         ls = line.strip().split(',')
         clonotype_id = ls[0] + '_' + ls[1] + '_' + ls[3]
-        #lc_id = ls[0]+'_'+ls[1]+'_'+
         
         d = None
         if clonotype_id not in hout_hash:
@@ -101,12 +58,9 @@ for key in hout:
     if i > 10:
         break
         
-    #print(hout[key])
     i += 1
-    
-#print(len(hout))
+
 mout.close()
-#print(hout.keys())
 
 with open('10Xout.csv', 'w') as fout:
     fout.write('function,mongo_id,heavy_id,heavy_v,heavy_j,heavy_cdr3,heavy_cluster,light_id,light_v,light_j,light_cdr3,light_cluster,heavy_raw,light_raw\n')
@@ -116,11 +70,7 @@ with open('10Xout.csv', 'w') as fout:
             if len(d['heavies']) == 0 or len(d['lights']) == 0:
                 print(mid,'doesnt have a light or heavy')
                 continue
-#             print(d)
             hls = d['heavies'][0]['ls']
             lls = d['lights'][0]['ls']
-            #print(lls)
             fout.write(hls[2] +','+ hls[0] + ',' + hls[1] + ',' + hls[3] + ',' + hls[4] + ',' + hls[5] + ',' + cluster_id + ',' + lls[3] + ',' + lls[19] + ',' + lls[20] + ',' + lls[22] + ',' + cluster_id + ',' + hls[7] + ',' + lls[30] + '\n')
-# -
-
 
