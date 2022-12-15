@@ -1,18 +1,4 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
 
-# +
 import argparse
 import gzip
 import json
@@ -23,16 +9,7 @@ OUT = 'KIRV-paired.csv'
 RUN = 'x'
 SAMPLE = 'x'
 
-#parser = argparse.ArgumentParser()
-#parser.add_argument('heavy')
-#parser.add_argument('light')
-#parser.add_argument('outfile')
-#parser.add_argument('--run')
-#parser.add_argument('--sample')
-#args = parse.parse_args()
-
 d = {}
-
 
 with gzip.open(INPUT_HEAVY, 'rt') as fin:
     for line in fin:
