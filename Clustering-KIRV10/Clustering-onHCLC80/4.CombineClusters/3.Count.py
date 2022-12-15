@@ -1,18 +1,4 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
 
-# +
 count = {}
 
 with open('10Xout_formatted.csv') as fin, open('10Xout_counted.csv', 'w') as fout:
@@ -27,12 +13,7 @@ with open('10Xout_formatted.csv') as fin, open('10Xout_counted.csv', 'w') as fou
     for line in fin:
         if FIRST:
             fout.write('cluster_id,function,mongo_id,heavy_id,heavy_v,heavy_j,heavy_cdr3,light_id,light_v,light_j,light_cdr3,heavy_raw,light_raw,count\n')
-#             fout.write(line.strip() + ',count\n')
             FIRST = False
         else:
             ls = line.strip().split(',')
             fout.write(line.strip() + ',' + str(count[ls[0]]) + '\n')
-
-# -
-
-
