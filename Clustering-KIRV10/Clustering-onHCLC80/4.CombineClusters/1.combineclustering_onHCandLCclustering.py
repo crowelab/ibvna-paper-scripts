@@ -1,18 +1,3 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
-
-# +
 import csv
 
 FILE1="clustered-heavies-KIRV10.dat"
@@ -21,7 +6,6 @@ FILE2="clustered-lights-KIRV10.dat"
 MISSING="missing.dat"
 mout = open(MISSING,'w')
 
-# d = {}
 hout = {}
 
 hout_hash = {}
@@ -88,7 +72,6 @@ with open('10Xout.csv', 'w') as fout:
             if len(d['heavies']) == 0 or len(d['lights']) == 0:
                 print(mid,'doesnt have a light or heavy')
                 continue
-#             print(d)
             hls = d['heavies'][0]['ls']
             lls = d['lights'][0]['ls']
             fout.write(hls[2] +','+ hls[0] + ',' + hls[1] + ',' + hls[3] + ',' + hls[4] + ',' + hls[5] + ',' + cluster_id + ',' + lls[1] + ',' + lls[3] + ',' + lls[4] + ',' + lls[5] + ',' + d['lights'][0]['cluster'] + ',' + hls[7] + ',' + lls[7] + '\n')
