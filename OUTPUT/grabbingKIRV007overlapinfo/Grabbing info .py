@@ -1,17 +1,3 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
-
 # 05/07/2020 
 #
 # I took the file that has all of the KIRV007 overlaps that seth ordered. But since his file only had sequence info and none of the additional information that comes with pyir, i grabbed that info after running dbtools to get paired.csv on all of kirv007 runs. 
@@ -21,14 +7,12 @@
 import csv
 import os
 
-# +
 ALLseqs='KIRV7-ALL-3.csv'
 Overlaps='KIRV007overlaps.csv'
 
 OUTFILE='KIRV007overlapswinfo.csv'
 MISSING='missing.dat'
 
-# +
 #dictionary d is going to hold my mongo ID as keys and the values is all my relevant info
 d={}
 
