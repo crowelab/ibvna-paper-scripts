@@ -1,18 +1,3 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
-
-# +
 import argparse
 import gzip
 import json
@@ -22,14 +7,6 @@ INPUT_LIGHT = 'set2_lights.json.gz'
 OUT = 'set2-paired.csv'
 RUN = 'x'
 SAMPLE = 'x'
-
-#parser = argparse.ArgumentParser()
-#parser.add_argument('heavy')
-#parser.add_argument('light')
-#parser.add_argument('outfile')
-#parser.add_argument('--run')
-#parser.add_argument('--sample')
-#args = parse.parse_args()
 
 d = {}
 
@@ -93,8 +70,3 @@ with open(OUT, 'w') as fout:
         fout.write(light['NT-Trimmed'] + ',')
         fout.write(light['Raw Sequence'] + ',')
         fout.write(light.get('AA', 'None') + '\n')
-
-
-# -
-
-
