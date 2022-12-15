@@ -1,24 +1,9 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
-
 # Counting the number of occurences per cdr3 length
 
 import os
 import csv
 import pandas as pd
 
-# +
 count = {}
 count_l={}
 
@@ -47,7 +32,3 @@ with open('KIRV010PB-CDR3.csv') as fin, open('KIRV010PB-CDR3-counted.csv', 'w') 
         else:
             ls = line.strip().split(',')
             fout.write(line.strip() + ',' + str(count[ls[0]]) + ',' + str(count_l[ls[1]]) + '\n')
-
-# -
-
-
