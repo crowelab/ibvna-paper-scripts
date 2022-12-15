@@ -1,17 +1,3 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .py
-#       format_name: light
-#       format_version: '1.5'
-#       jupytext_version: 1.14.4
-#   kernelspec:
-#     display_name: Python 3
-#     language: python
-#     name: python3
-# ---
-
 import pandas as pd
 
 df = pd.read_csv('KIRV10-paired.csv')
@@ -25,7 +11,6 @@ df_h.head()
 
 df_l.head()
 
-# +
 f = open('KIRV_heavy.dat', 'w')
 
 last_v = ""
@@ -50,9 +35,6 @@ for index,row in df_h.iterrows():
     elif (last_v!=v or last_j!=j or last_cdr3len!=cdr3len):
         if last_end == False:
             f.write("END\n")
-            #last_end = True
-        #else:
-        #    last_end = False
     
     raw_iso = str(row['heavy_isotype'])
     if raw_iso.find('IGHG')!=-1:
@@ -74,8 +56,6 @@ for index,row in df_h.iterrows():
         print(idstr)
     
     line = idstr + " " + str(iso) + " 10x " + str(v) + " " + str(j) + " " + str(row['heavy_cdr3_(aa)']) + " " + cdr3_nt + " " + vdj + " " + str(row['heavy_percent_id'])
-
-    #if v=="IGHV1-18" and j = 'IGHJ2'
     
     f.write(line + '\n')
     
@@ -87,7 +67,6 @@ f.write("END\n")
 
 f.close()
 
-# +
 f = open('KIRV_light.dat', 'w')
 
 last_v = ""
@@ -112,9 +91,6 @@ for index,row in df_l.iterrows():
     elif (last_v!=v or last_j!=j or last_cdr3len!=cdr3len):
         if last_end == False:
             f.write("END\n")
-            #last_end = True
-        #else:
-            #last_end = False
     
     raw_iso = str(row['light_isotype'])
     if raw_iso.find('IGK')!=-1:
@@ -137,6 +113,3 @@ for index,row in df_l.iterrows():
 f.write("END\n")
 
 f.close()
-# -
-
-
